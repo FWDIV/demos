@@ -1,0 +1,5 @@
+Starting Telephone with 4 MPI Ranks...
+MPI rank 0 starting message: hello telephone 
+MPI rank 1 received message: helbleghlephone
+MPI rank 2 received message: helblegbleghone
+MPI rank 3 received message: helblYgbleghone

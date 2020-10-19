@@ -61,21 +61,19 @@ int main(int argc, char **argv)
 
             /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ~~~~~~~~~~~~~~Complete: ~~~~~~~~~~~~~~~~
-
             MPI_Send();
-
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+            MPI_Send(buf, len, MPI_CHAR, world_rank+1% world_size,0, MPI_COMM_WORLD);
 
         } else if (world_rank == (i+1) % world_size) {
 
             /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ~~~~~~~~~~~~~~Complete: ~~~~~~~~~~~~~~~~
-
             MPI_Recv();
-
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+            MPI_Recv(buf, len, MPI_CHAR,i,0, MPI_COMM_WORLD, NULL);
 
             garble(buf);
             printf("MPI rank %d received message: %s\n", world_rank, buf);
@@ -87,3 +85,7 @@ int main(int argc, char **argv)
     MPI_Finalize();
     return 0;
 }
+
+
+
+
